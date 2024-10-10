@@ -15,7 +15,12 @@ steps:
 - task: NuGetAuthenticate@1
   displayName: Authenticate with Azure Artifacts
 
+
 - task: NuGetToolInstaller@0
+  displayName: 'Install NuGet 6.5.x'
+  inputs:
+    versionSpec: 6.5.x
+    checkLatest: false
 
 - task: DotNetCoreCLI@2
   displayName: "Restore"
@@ -26,12 +31,7 @@ steps:
     #vstsFeed: "8ac2e5c3-c800-4154-858f-5970c6d39629/86717379-19c1-4da3-8909-51d796a63034"
     includeNuGetOrg: true
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: "build"
-    projects: "**/*.csproj"
-    configuration: "Release"
-    displayName: "Build Function project"
+
     
 - task: NuGetCommand@2
   inputs:
