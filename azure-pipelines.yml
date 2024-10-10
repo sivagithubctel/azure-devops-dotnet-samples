@@ -18,6 +18,15 @@ steps:
 - task: NuGetToolInstaller@0
 
 - task: DotNetCoreCLI@2
+  displayName: "Restore"
+  inputs:
+    command: "restore"
+    projects: "**/*.csproj"
+    feedsToUse: "select"
+    #vstsFeed: "8ac2e5c3-c800-4154-858f-5970c6d39629/86717379-19c1-4da3-8909-51d796a63034"
+    includeNuGetOrg: true
+
+- task: DotNetCoreCLI@2
   inputs:
     command: "build"
     projects: "**/*.csproj"
