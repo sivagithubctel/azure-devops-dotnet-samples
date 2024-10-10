@@ -7,6 +7,10 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- task: UseDotNet@2
+  displayName: Use .NET 8.0.x SDK
+  inputs:
+    version: 8.0.x
 - task: NuGetToolInstaller@0
 
 - task: NuGetCommand@2
