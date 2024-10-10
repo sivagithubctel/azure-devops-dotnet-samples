@@ -11,8 +11,19 @@ steps:
   displayName: Use .NET 8.0.x SDK
   inputs:
     version: 8.0.x
+
+- task: NuGetAuthenticate@1
+  displayName: Authenticate with Azure Artifacts
+
 - task: NuGetToolInstaller@0
 
+- task: DotNetCoreCLI@2
+  inputs:
+    command: "build"
+    projects: "**/*.csproj"
+    configuration: "Release"
+    displayName: "Build Function project"
+    
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
